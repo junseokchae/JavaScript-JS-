@@ -1,0 +1,14 @@
+@mixin title{
+    font-size: 1.5em;
+    margin-left: 50px;
+}
+#title {
+    @include title;
+}
+.axis path,
+.axis line 
+    {
+        fill: none;
+        stroke: black;
+        shape-rendering: crispEdges;
+    }
