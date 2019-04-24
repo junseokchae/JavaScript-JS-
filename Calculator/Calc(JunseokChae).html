@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head><title>Cool Calc: Assignment Template</title>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+	
+<style>
+#display
+{
+	border: 1px solid black;
+	height: 35px;
+	background-color: lightsalmon;
+	width: 80%;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 10px;
+}
+body
+{
+	background-color: peachpuff;
+}
+table{
+	margin: auto;
+}
+.textAlign{
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<div id="display"></div>
+<table>
+	<tr>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num7">7</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num8">8</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num9">9</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="plus">+</div></td>
+	</tr>
+	<tr>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num4">4</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num5">5</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num6">6</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="minus">-</div></td>
+	</tr>
+	<tr>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num1">1</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num2">2</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num3">3</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="times">*</div></td>
+	</tr>
+	<tr class="textAlign">
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="num0">0</div></td>
+		<td><div class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="backspace">&larr;</div></td>
+		<td><div class="numsOrOps mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="divides">/</div></td>
+		<td><div class="mdl-button mdl-js-button mdl-button--fab mdl-button--colored" id="equals">=</div></td>
+	</tr>
+</table>
+
+<script>
+let currentCalc = "";
+let numbersOrOperators = document.getElementsByClassName("numsOrOps");
+let operators = document.getElementsByClassName("operators");
+let backspace_btn = document.querySelector("#backspace")
+let equals_btn = document.querySelector("#equals");
+
+Array.from(numbersOrOperators, c => c.addEventListener('click', function (e)
+{
+	currentCalc = currentCalc + e.target.textContent;
+	let disp = document.querySelector("#display");
+	disp.textContent = currentCalc;
+}));
+
+equals_btn.addEventListener("click",
+function (e)
+{
+	let disp = document.querySelector("#display");
+	disp.textContent = eval(currentCalc);
+	currentCalc = disp.textContent;
+	console.log(currentCalc);
+});
+
+backspace_btn.addEventListener("click",
+function (e)
+{
+	let disp = document.querySelector("#display");
+	currentCalc = currentCalc.substring(0,currentCalc.length-1);
+	disp.textContent = currentCalc;
+	console.log(currentCalc);
+})
+
+
+</script>
+</html>
